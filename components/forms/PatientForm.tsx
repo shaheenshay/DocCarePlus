@@ -9,7 +9,7 @@ import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import CustomFormField from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
-import { use, useState } from "react";
+import { useState } from "react";
 import { UserFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
@@ -41,7 +41,7 @@ const PatientForm = () => {
   async function onSubmit({
     name,
     email,
-    phone,
+    phone
   }: z.infer<typeof UserFormValidation>) {
     setIsLoading(true);
 
@@ -50,10 +50,11 @@ const PatientForm = () => {
 
       const user = await createUser(userData);
 
-      if (user) router.push(`/patients/${user.id}/register`)
+      if(user) router.push(`/patients/${user.$id}/register`)
     } catch (error) {
       console.log(error);
     }
+    
   }
 
   return (
