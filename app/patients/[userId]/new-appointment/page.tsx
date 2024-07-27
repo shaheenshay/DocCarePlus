@@ -1,8 +1,9 @@
-import PatientForm from "@/components/forms/PatientForm";
+import AppointmentForm from "@/components/forms/AppointmentForm";
+import { getPatient } from "@/lib/actions/patient.actions";
 import Image from "next/image";
-import Link from "next/link";
 
-export default function NewAppointment() {
+export default async function NewAppointment({ params: { userId }}: SearchParamProps) {
+    const patient = await getPatient(userId);
   return (
     <div className="flex h-screen max-h-screen">
       <section className="remove-scrollbar container my-auto">
@@ -15,9 +16,13 @@ export default function NewAppointment() {
             className="mb-12 h-10 w-fit"
           />
 
-          {/* <PatientForm /> */}
+          <AppointmentForm 
+          type="create"
+          userId={userId}
+          patientId={patient.id}          
+          />
 
-          <p className="justify-items-end text-dark-600 xl:text-left">
+          <p className="copyright mt-11 py-12">
             © 2024 DoCarePlus
           </p>
         </div>
