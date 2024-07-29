@@ -22,7 +22,7 @@ export default async function NewAppointment({ params: { userId }}: SearchParamP
           patientId={patient.id}          
           />
 
-          <p className="copyright mt-11 py-12">
+          <p className="copyright mt-10 py-12">
             © 2024 DoCarePlus
           </p>
         </div>
