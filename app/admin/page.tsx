@@ -1,11 +1,94 @@
+import {DataTable} from "@/components/table/DataTable";
 import StatCard from "@/components/StatCard";
 import { getRecentAppointmentList } from "@/lib/actions/appointment.actions";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import {columns, Payment} from "@/components/table/columns";
+
+async function getData(): Promise<Payment[]> {
+    // Fetch data from your API here.
+    return [
+      {
+        id: "728ed52f",
+        amount: 100,
+        status: "pending",
+        email: "m@example.com",
+      },
+      {
+        id: "728ed52f",
+        amount: 100,
+        status: "pending",
+        email: "m@example.com",
+      },
+      {
+        id: "728ed52f",
+        amount: 100,
+        status: "pending",
+        email: "m@example.com",
+      },
+      {
+        id: "728ed52f",
+        amount: 100,
+        status: "pending",
+        email: "m@example.com",
+      },
+      {
+        id: "728ed52f",
+        amount: 100,
+        status: "pending",
+        email: "m@example.com",
+      },
+      {
+        id: "728ed52f",
+        amount: 100,
+        status: "pending",
+        email: "m@example.com",
+      },
+      {
+        id: "728ed52f",
+        amount: 100,
+        status: "pending",
+        email: "m@example.com",
+      },
+      {
+        id: "728ed52f",
+        amount: 100,
+        status: "pending",
+        email: "m@example.com",
+      },
+      {
+        id: "728ed52f",
+        amount: 100,
+        status: "pending",
+        email: "m@example.com",
+      },
+      {
+        id: "728ed52f",
+        amount: 100,
+        status: "pending",
+        email: "m@example.com",
+      },
+      {
+        id: "728ed52f",
+        amount: 100,
+        status: "pending",
+        email: "m@example.com",
+      },
+      {
+        id: "728ed52f",
+        amount: 100,
+        status: "pending",
+        email: "m@example.com",
+      },
+      // ...
+    ]
+  }
 
 const Admin = async () => {
-    const appointments = await getRecentAppointmentList()
+    const data = await getData()
+
+  const appointments = await getRecentAppointmentList();
   return (
     <div className="mx-auto flex max-w-7xl flex-col space-y-14">
       <header className="admin-header">
@@ -30,25 +113,28 @@ const Admin = async () => {
         </section>
 
         <section className="admin-stat">
-          <StatCard 
+          <StatCard
             type="appointments"
             count={appointments.scheduledCount}
             label="Scheduled appointments"
             icon="/assets/icons/appointments.svg"
           />
-          <StatCard 
+          <StatCard
             type="pending"
             count={appointments.pendingCount}
             label="Pending appointments"
             icon="/assets/icons/pending.svg"
           />
-          <StatCard 
+          <StatCard
             type="cancelled"
             count={appointments.cancelledCount}
             label="Cancelled appointments"
             icon="/assets/icons/cancelled.svg"
           />
         </section>
+
+        {/* <DataTable columns={columns} data={appointments.documents} /> */}
+        <DataTable columns={columns} data={data} />
       </main>
     </div>
   );
